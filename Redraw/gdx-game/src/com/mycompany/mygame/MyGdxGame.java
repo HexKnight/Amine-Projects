@@ -78,7 +78,11 @@ public class MyGdxGame implements ApplicationListener
 		font.setScale(1.9f);
 		font.setColor(Color.BLACK);
 		font.draw(batch, "B fitness: "+ppt.getBest().getFit(), 350, 500);
-
+		
+		font.setScale(1.9f);
+		font.setColor(Color.BLUE);
+		font.draw(batch, ""+ppt.getComplete()+"% Complete", 350, 400);
+		
 		batch.end();
 		if(Gdx.input.justTouched())
 			ppt.crossover();

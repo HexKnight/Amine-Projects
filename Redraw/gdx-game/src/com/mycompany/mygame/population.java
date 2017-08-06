@@ -65,13 +65,17 @@ public class population
 		}else{
 
 		}
+		
+		boolean b;
 
 		for(int i=0; i<s.length; i++){
+			b = true;
 			for(int j=0; j<s.length; j++){
 				if(equal(s[i], s[j])){
-
+					b = false;
 				}
 			}
+			progress += b ? 1 : 0;
 		}
 	}
 
