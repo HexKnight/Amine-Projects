@@ -22,6 +22,7 @@ public class population
 		r = new Random();
 		factorial = fact(cities.length);
 		gens = 0;
+		progress = 1;
 	}
 
 	public void generateRandom(){
@@ -110,6 +111,10 @@ public class population
 
 	public int getGenerations(){
 		return this.gens;
+	}
+	
+	public solution[] getPopulation(){
+		return this.s;
 	}
 
 	private int fact(int in){

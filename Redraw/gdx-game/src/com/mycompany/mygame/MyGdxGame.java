@@ -69,8 +69,9 @@ public class MyGdxGame implements ApplicationListener
 		for(int i=0; i<cities.length; i++)
 			font.draw(batch, "b["+i+"]: "+ppt.getBest().getLaying()[i], 30, 600-(50*i));
 		font.setColor(Color.RED);
-		for(int i=0; i<cities.length; i++)
-			font.draw(batch, "w["+i+"]: "+ppt.getWorst().getLaying()[i], 170, 600-(50*i));
+		for(int j = 0; j<ppt.getPopulation().length; j++)
+			for(int i=0; i<cities.length; i++)
+				font.draw(batch, "s["+i+"]: "+ppt.getPopulation()[j].getLaying()[i], 170, 600-(50*i));
 
 		font.setScale(2.1f);
 		font.setColor(Color.PURPLE);
