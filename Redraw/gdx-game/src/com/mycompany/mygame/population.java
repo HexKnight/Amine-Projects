@@ -74,12 +74,12 @@ public class population
 			}
 		}
 	}
-/*
+
 	public float getComplete(){
-		float f = 100*();
-		return 
+		float f = 100*(progress/factorial);
+		return f;
 	}
-*/
+
 	private solution[] selection(){
 		sort(s);
 		int x = 0;
