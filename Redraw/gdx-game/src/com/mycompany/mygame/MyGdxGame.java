@@ -39,7 +39,10 @@ public class MyGdxGame implements ApplicationListener
 
 	@Override
 	public void render()
-	{        
+	{   
+		if(Gdx.input.justTouched())
+			ppt.crossover();
+		
 	    Gdx.gl.glClearColor(1, .98f, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		sr.setProjectionMatrix(camera.combined);
@@ -85,8 +88,6 @@ public class MyGdxGame implements ApplicationListener
 		font.draw(batch, ""+ppt.getComplete()+"% Complete", 350, 400);
 		
 		batch.end();
-		if(Gdx.input.justTouched())
-			ppt.crossover();
 	}
 
 	@Override
