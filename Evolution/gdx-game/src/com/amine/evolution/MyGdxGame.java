@@ -25,7 +25,9 @@ public class MyGdxGame implements ApplicationListener
 	public void create()
 	{
 		camera = new OrthographicCamera(width, height);
-		port = new StretchViewport(1280, 720, camera);
+		camera.position.set(width/2, height/2, 0);
+		camera.update();
+		port = new StretchViewport(width, height, camera);
 		b2dr = new Box2DDebugRenderer();
 		sr = new ShapeRenderer();
 		world = new World(new Vector2(0, -9.81f), true);
@@ -50,6 +52,9 @@ public class MyGdxGame implements ApplicationListener
 	@Override
 	public void dispose()
 	{
+		sr.dispose();
+		b2dr.dispose();
+		world.dispose();
 	}
 
 	@Override
