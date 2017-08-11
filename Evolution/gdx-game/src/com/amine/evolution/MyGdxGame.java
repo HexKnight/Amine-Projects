@@ -11,9 +11,9 @@ import com.badlogic.gdx.math.*;
 public class MyGdxGame implements ApplicationListener
 {
 	//Constants Variables:
-	private static final float width = 1280;
-	private static final float height = 720;
-	private static final float PTM = 100;
+	public final float width = 1280;
+	public final float height = 720;
+	public final float ptm = 100;
 	//Variables Defenitions:
 	private OrthographicCamera camera;
 	private Viewport port;
