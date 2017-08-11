@@ -10,17 +10,21 @@ import com.badlogic.gdx.math.*;
 
 public class MyGdxGame implements ApplicationListener
 {
+	//Constants Variables:
+	private static final float width = 1280;
+	private static final float height = 720;
+	private static final float PTM = 100;
+	//Variables Defenitions:
 	private OrthographicCamera camera;
 	private Viewport port;
 	private ShapeRenderer sr;
 	private World world;
-	private static final float PTM = 100;
 	private Box2DDebugRenderer b2dr;
 	
 	@Override
 	public void create()
 	{
-		camera = new OrthographicCamera(1280, 720);
+		camera = new OrthographicCamera(width, height);
 		port = new StretchViewport(1280, 720, camera);
 		b2dr = new Box2DDebugRenderer();
 		sr = new ShapeRenderer();
