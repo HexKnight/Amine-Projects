@@ -4,10 +4,15 @@ public class GeneticAlgo
 {
 	public static void main(String[] args)
 	{
-		Population society = new Population(2000, "Java Language.", 0f);
+		String s = "Amine Tahiri Alaoui.";
+		Population society = new Population(2000, s, .01f);
 		society.generateRandom();
-		for(int i=0; i<100; i++){
+		for(;;){
 			System.out.println(society.best().value()+"   "+(int)(100*society.best().fitness())+"%");
+			if(society.best().fitness() >= .99f){
+				System.out.println("Goal Reached in the "+society.generation()+"th generation!");
+				break;
+			}
 			society.crossover();
 		}
 	}
@@ -40,21 +45,27 @@ class Population{
 	}
 	
 	public void crossover(){
-		sort();
 		updateCreatures();
 		Creature[] next = new Creature[amount];
 		Random r = new Random();
+		float guess;
 		Creature[] parents;
 		for(int i=0; i<amount; i++){
 			parents = selection();
 			char[] c = new char[this.goal.length()];
 			for(int j=0; j<this.goal.length(); j++){
-				c[j] = parents[r.nextInt(2)].chars[j];
+				guess = r.nextFloat();
+				if(guess<=this.mutation){
+					c[j] = (char)r.nextInt(256);
+				}else{
+					c[j] = parents[r.nextInt(2)].chars[j];
+				}
 			}
 			next[i] = new Creature(this.goal);
 			next[i].set(c);
 		}
 		this.population = next;
+		this.generation++;
 	}
 	
 	public Creature[] selection(){
@@ -83,6 +94,10 @@ class Population{
 	public Creature worst(){
 		this.sort();
 		return this.population[0];
+	}
+	
+	public int generation(){
+		return this.generation;
 	}
 	
 	public Creature[] get(){
