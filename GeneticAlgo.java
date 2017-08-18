@@ -4,14 +4,10 @@ public class GeneticAlgo
 {
 	public static void main(String[] args)
 	{
-		Population society = new Population(2000, "Amine", 0f);
+		Population society = new Population(2000, "Java Language.", 0f);
 		society.generateRandom();
-		String s = "";
-		for(;;){
-			for(int i=0; i<society.best().chars.length; i++)
-				s += society.best().chars[i];
-			System.out.println(s);
-			s = "";
+		for(int i=0; i<100; i++){
+			System.out.println(society.best().value()+"   "+(int)(100*society.best().fitness())+"%");
 			society.crossover();
 		}
 	}
@@ -84,6 +80,11 @@ class Population{
 		return this.population[amount-1];
 	}
 	
+	public Creature worst(){
+		this.sort();
+		return this.population[0];
+	}
+	
 	public Creature[] get(){
 		return this.population;
 	}
@@ -115,10 +116,18 @@ class Creature{
 	public char[] chars;
 	private String goal;
 	private float fitness;
+	private String value;
 	
 	public Creature(String goal){
 		this.goal = goal;
 		this.chars = new char[this.goal.length()];
+		value = "";
+	}
+	
+	public String value(){
+		for(int i=0; i<this.goal.length(); i++)
+			this.value += this.chars[i];
+		return this.value;
 	}
 	
 	public void set(char[] c){
